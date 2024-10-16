@@ -227,17 +227,18 @@ class myHashMap<K,V> {
         while (head != null) {
             if (head.key.equals(key)) {
                 if (prev != null) {
-                    prev.next = head.next; // Bypass the node
+                    prev.next = head.next; 
                 } else {
-                    bucket.set(i, head.next); // Move head to the next node
+                    bucket.set(i, head.next);
                 }
                 size--;
-                return head.value; // Return the removed value
+                return head.value; 
             }
+            
             prev = head;
             head = head.next;
         }
-        return null; // not found
+        return null; 
     }
 
     /**
@@ -259,15 +260,9 @@ class myHashMap<K,V> {
            (! originalValue.equals(val)) ) {
             return false;
         }
-
-        // Key was found and its value equals the passed
-        // parameter 'val'
         remove(key);
-
         return true;
     }
-
-
     /**
      * method: V put(K, V)
      *
@@ -407,13 +402,13 @@ class myHashMap<K,V> {
 
         while (head != null) {
             if (head.key.equals(key)) {
-                V oldValue = head.value; // Store old value
-                head.value = val; // Replace with new value
-                return oldValue; // Return the old value
+                V oldValue = head.value; 
+                head.value = val; 
+                return oldValue; 
             }
             head = head.next;
         }
-        return null; // Key not found
+        return null;
     }    
     /**
      * method: boolean replace(K, V, V)
@@ -436,12 +431,12 @@ class myHashMap<K,V> {
 
         while (head != null) {
             if (head.key.equals(key) && head.value.equals(oldVal)) {
-                head.value = newVal; // Replace the value
-                return true; // Replacement successful
+                head.value = newVal; 
+                return true; 
             }
             head = head.next;
         }
-        return false; // Key not found or oldVal does not match
+        return false; 
     }
     /**
      * Method: boolean contains(V)
