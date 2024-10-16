@@ -237,7 +237,7 @@ class myHashMap<K,V> {
             prev = head;
             head = head.next;
         }
-        return null; // Key not found
+        return null; // not found
     }
 
     /**
@@ -255,7 +255,6 @@ class myHashMap<K,V> {
     public boolean remove(K key, V val) {
 
         V originalValue = get(key);
-
         if (originalValue == null || 
            (! originalValue.equals(val)) ) {
             return false;
