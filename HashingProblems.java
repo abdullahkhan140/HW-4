@@ -13,7 +13,6 @@
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
 
 class HashingProblems {
 
@@ -41,8 +40,8 @@ class HashingProblems {
                 count++;
             }
         }
-        
-        return 0.0 / 0.0;
+
+        return sumOfTotal/count;
     }
     /*
      * Method odd()
@@ -53,8 +52,8 @@ class HashingProblems {
 
   public ArrayList<String> odd(HashMap<Integer, String> map) {
       ArrayList<String> result = new ArrayList<>();
-      for (Integer key : map.keySet()){
-          if (key % 2 != 0){
+      for (Integer key : map.keySet()) {
+          if (key % 2 != 0) {
               result.add(map.get(key));
           }
       }
@@ -101,13 +100,13 @@ class HashingProblems {
     HashSet<Integer> numbersFound = new HashSet<>();
       int count = 0;
 
-      for (int number : numbers){
+      for (int number : numbers) {
           if (numbersFound.contains(number - k)) {
-              count++
-                  }
-           if (numbersFound.contains(number + k)) {
-              count++
-                  }
+              count++;
+          }
+          if (numbersFound.contains(number + k)) {
+              count++;
+          }
           numbersFound.add(number);
       }
       return count;
