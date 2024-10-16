@@ -32,19 +32,18 @@ class HashingProblems {
      */
 
     public double getAverage(HashMap<Integer, Integer> map, int[] array) {
-
-        /*
-         * ADD YOUR CODE HERE - DO NOT FORGET TO ADD YOU NAME AT TOP OF FILE
-         *
-         * Note: if NO values found in common between the HashMap and supplied array,
-         * returning 0.0 is NOT correct, as that is not the average value. Whereas
-         * returning 0.0/0.0 IS correct (which would return a non-number).
-         */
-
-         return 0.0 / 0.0;
-  }
-
-
+        double sumOfTotal  = 0.0;
+        double count = 0.0;
+        
+        for(int key : array){
+            if (map.containsKey(key)){
+                sumOfTotal += map.get(key);
+                count++;
+            }
+        }
+        
+        return 0.0 / 0.0;
+    }
     /*
      * Method odd()
      *
@@ -53,20 +52,12 @@ class HashingProblems {
      */
 
   public ArrayList<String> odd(HashMap<Integer, String> map) {
-    
       ArrayList<String> result = new ArrayList<>();
-
-      /*
-       * ADD YOUR CODE HERE
-       *
-       * Hint: Consider iterating over the HashMap using the keySet method.
-       */
-
-
+      for (Integer key : map.keySet()){
+          if (key % 2 != 0){
+              result.add(map.get(key));
       return result;
   }
-
-
   /*
    * Method twoSums()
    *
@@ -105,12 +96,19 @@ class HashingProblems {
    */
 
   public int twoSums(int[] numbers, int k) {
+    HashSet<Integer> numbersFound = new HashSet<>();
+      int count = 0;
 
-      /*
-       * ADD YOUR CODE HERE
-       */
-
-      return -1;
+      for (int number : numbers){
+          if (numbersFound.contains(number - k)){
+              count++
+                  }
+           if (numbersFound.contains(number + k)){
+              count++
+                  }
+          numbersFound.add(number);
+          
+      return count;
   }
 
 } /* end class HashingProblems */
