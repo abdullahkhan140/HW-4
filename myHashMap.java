@@ -220,8 +220,8 @@ class myHashMap<K,V> {
      */
 
     public V remove(K key) {
-    int index = getBucketIndex(key);
-        HashNode<K, V> head = bucket.get(index);
+    int i = getBucketIndex(key);
+        HashNode<K, V> head = bucket.get(i);
         HashNode<K, V> prev = null;
 
         while (head != null) {
@@ -229,7 +229,7 @@ class myHashMap<K,V> {
                 if (prev != null) {
                     prev.next = head.next; // Bypass the node
                 } else {
-                    bucket.set(index, head.next); // Move head to the next node
+                    bucket.set(i, head.next); // Move head to the next node
                 }
                 size--;
                 return head.value; // Return the removed value
