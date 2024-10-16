@@ -220,20 +220,25 @@ class myHashMap<K,V> {
      */
 
     public V remove(K key) {
+    int index = getBucketIndex(key);
+        HashNode<K, V> head = bucket.get(index);
+        HashNode<K, V> prev = null;
 
-        /*
-         * ADD YOUR CODE HERE
-         *
-         * Review the code in the whole object to understand teh data structures layout.
-         * Additionally, review the method put() for inserting a new Key / Value pair into
-         * the HashMap. This method will do the opposite by removing an element. Do see
-         * the return value discussion in this method's prologue to make sure the correct
-         * return value is returned the invoking function based on the remove outcome.
-         */
-
-        return null;
+        while (head != null) {
+            if (head.key.equals(key)) {
+                if (prev != null) {
+                    prev.next = head.next; // Bypass the node
+                } else {
+                    bucket.set(index, head.next); // Move head to the next node
+                }
+                size--;
+                return head.value; // Return the removed value
+            }
+            prev = head;
+            head = head.next;
+        }
+        return null; // Key not found
     }
-
 
     /**
      * Method: boolean remove(K, V)
@@ -398,18 +403,19 @@ class myHashMap<K,V> {
      */
 
     public V replace(K key, V val) {
+     int index = getBucketIndex(key);
+        HashNode<K, V> head = bucket.get(index);
 
-        /*
-         * ADD YOUR CODE HERE - DO NOT FORGET TO ADD YOUR NAME AT TOP OF FILE
-         *
-         * Make sure you return the proper value based on the outcome of this method's
-         * replace (see method's prologue above).
-         */
-
-        return val;
-    }
-
-    
+        while (head != null) {
+            if (head.key.equals(key)) {
+                V oldValue = head.value; // Store old value
+                head.value = val; // Replace with new value
+                return oldValue; // Return the old value
+            }
+            head = head.next;
+        }
+        return null; // Key not found
+    }    
     /**
      * method: boolean replace(K, V, V)
      *
@@ -426,18 +432,18 @@ class myHashMap<K,V> {
      */
 
     public boolean replace(K key, V oldVal, V newVal) {
+          int index = getBucketIndex(key);
+        HashNode<K, V> head = bucket.get(index);
 
-        /*
-         * ADD YOUR CODE HERE
-         *
-         * This method should apply the precondition (aka, the Key already exists with the
-         * value 'oldval', and is so, it SHOULD call replace(K, V) for code reuse.
-         */
-
-        return false;
+        while (head != null) {
+            if (head.key.equals(key) && head.value.equals(oldVal)) {
+                head.value = newVal; // Replace the value
+                return true; // Replacement successful
+            }
+            head = head.next;
+        }
+        return false; // Key not found or oldVal does not match
     }
-
-
     /**
      * Method: boolean contains(V)
      *
