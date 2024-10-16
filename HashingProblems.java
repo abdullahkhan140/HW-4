@@ -56,6 +56,8 @@ class HashingProblems {
       for (Integer key : map.keySet()){
           if (key % 2 != 0){
               result.add(map.get(key));
+          }
+      }
       return result;
   }
   /*
@@ -100,14 +102,14 @@ class HashingProblems {
       int count = 0;
 
       for (int number : numbers){
-          if (numbersFound.contains(number - k)){
+          if (numbersFound.contains(number - k)) {
               count++
                   }
-           if (numbersFound.contains(number + k)){
+           if (numbersFound.contains(number + k)) {
               count++
                   }
           numbersFound.add(number);
-          
+      }
       return count;
   }
 
