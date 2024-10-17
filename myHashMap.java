@@ -220,25 +220,23 @@ class myHashMap<K,V> {
      */
 
     public V remove(K key) {
-    int i = getBucketIndex(key);
-        HashNode<K, V> head = bucket.get(i);
-        HashNode<K, V> prev = null;
-
-        while (head != null) {
-            if (head.key.equals(key)) {
-                if (prev != null) {
-                    prev.next = head.next; 
+    int i = getBucketIndex(key); // get index  for bucket where key should be found
+        HashNode<K, V> head = bucket.get(i); // get head node of bucket a index i
+        HashNode<K, V> prev = null; /// keep track of other node before
+        while (head != null) { // Iterate through linked list in bucket
+            if (head.key.equals(key)) { // if key found
+                if (prev != null) { 
+                    prev.next = head.next; // remove node by linking to prev node to next node 
                 } else {
-                    bucket.set(i, head.next);
+                    bucket.set(i, head.next); // when removing node, update bucket
                 }
-                size--;
-                return head.value; 
+                size--; // decrease size of hash
+                return head.value;  // return value of removed node
             }
-            
-            prev = head;
-            head = head.next;
+            prev = head; // move prev to current node
+            head = head.next; // move head to next node
         }
-        return null; 
+        return null;  // return null if not found
     }
 
     /**
@@ -254,14 +252,13 @@ class myHashMap<K,V> {
      */
 
     public boolean remove(K key, V val) {
-
-        V originalValue = get(key);
+        V originalValue = get(key); 
         if (originalValue == null || 
-           (! originalValue.equals(val)) ) {
-            return false;
+            (! originalValue.equals(val)) ) 
+            return false; 
         }
-        remove(key);
-        return true;
+        remove(key); 
+        return true; 
     }
     /**
      * method: V put(K, V)
@@ -397,17 +394,17 @@ class myHashMap<K,V> {
      */
 
     public V replace(K key, V val) {
-     int i = getBucketIndex(key);
-        HashNode<K, V> head = bucket.get(i);
-        while (head != null) {
-            if (head.key.equals(key)) {
-                V oldValue = head.value; 
-                head.value = val; 
-                return oldValue; 
+     int i = getBucketIndex(key); // get index for bucket at index i
+        HashNode<K, V> head = bucket.get(i); // get head node at index i
+        while (head != null) { // traverse linked list in bucket 
+            if (head.key.equals(key)) { // if key matches
+                V oldValue = head.value; // store current val
+                head.value = val; // update val to new val
+                return oldValue; // return old val
             }
-            head = head.next;
+            head = head.next; // move to next node
         }
-        return null;
+        return null; // return null if key not found 
     }    
     /**
      * method: boolean replace(K, V, V)
@@ -425,17 +422,16 @@ class myHashMap<K,V> {
      */
 
     public boolean replace(K key, V oldVal, V newVal) {
-          int i = getBucketIndex(key);
-        HashNode<K, V> head = bucket.get(i);
-
-        while (head != null) {
+          int i = getBucketIndex(key);// get index for bucket at index i
+        HashNode<K, V> head = bucket.get(i); // get head node at index i
+        while (head != null) { // traverse linked list in bucket 
             if (head.key.equals(key) && head.value.equals(oldVal)) {
-                head.value = newVal; 
-                return true; 
+                head.value = newVal; // update value to newVal
+                return true;  //return true after update of bucket
             }
-            head = head.next;
+            head = head.next; // move to next node in list
         }
-        return false; 
+        return false; // return fale if pair not found
     }
     /**
      * Method: boolean contains(V)
