@@ -31,17 +31,17 @@ class HashingProblems {
      */
 
     public double getAverage(HashMap<Integer, Integer> map, int[] array) {
-        double sumOfTotal  = 0.0;
-        double count = 0.0;
+        double sumOfTotal  = 0.0; // sum of values 
+        double count = 0.0; // count of entries 
         
-        for(int key : array){
-            if (map.containsKey(key)){
-                sumOfTotal += map.get(key);
+        for(int key : array){ 
+            if (map.containsKey(key)){ // add value to sum
+                sumOfTotal += map.get(key); // increment count
                 count++;
             }
         }
 
-        return sumOfTotal/count;
+        return sumOfTotal/count; //return avg
     }
     /*
      * Method odd()
@@ -53,11 +53,11 @@ class HashingProblems {
   public ArrayList<String> odd(HashMap<Integer, String> map) {
       ArrayList<String> result = new ArrayList<>();
       for (Integer key : map.keySet()) {
-          if (key % 2 != 0) {
-              result.add(map.get(key));
+          if (key % 2 != 0) { // check if key is odd
+              result.add(map.get(key)); // add val to result if key is odd
           }
       }
-      return result;
+      return result; // return list of values for odd keys
   }
   /*
    * Method twoSums()
@@ -98,18 +98,17 @@ class HashingProblems {
 
   public int twoSums(int[] numbers, int k) {
     HashSet<Integer> numbersFound = new HashSet<>();
-      int count = 0;
-
-      for (int number : numbers) {
-          if (numbersFound.contains(number - k)) {
-              count++;
+      int count = 0; // initalize count to track pairs
+      for (int number : numbers) { // loop through each number in array
+          if (numbersFound.contains(number - k)) { // check if (number - k) is in numbersFound
+              count++; // increment count if found
           }
-          if (numbersFound.contains(number + k)) {
-              count++;
+          if (numbersFound.contains(number + k)) { // check if (number + k) is in numbersFound
+              count++; // increment count if found
           }
-          numbersFound.add(number);
+          numbersFound.add(number); // add current number to numbersFound
       }
-      return count;
+      return count; // return total count of pairs found.
   }
 
 } /* end class HashingProblems */
