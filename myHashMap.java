@@ -397,9 +397,8 @@ class myHashMap<K,V> {
      */
 
     public V replace(K key, V val) {
-     int index = getBucketIndex(key);
-        HashNode<K, V> head = bucket.get(index);
-
+     int i = getBucketIndex(key);
+        HashNode<K, V> head = bucket.get(i);
         while (head != null) {
             if (head.key.equals(key)) {
                 V oldValue = head.value; 
@@ -426,8 +425,8 @@ class myHashMap<K,V> {
      */
 
     public boolean replace(K key, V oldVal, V newVal) {
-          int index = getBucketIndex(key);
-        HashNode<K, V> head = bucket.get(index);
+          int i = getBucketIndex(key);
+        HashNode<K, V> head = bucket.get(i);
 
         while (head != null) {
             if (head.key.equals(key) && head.value.equals(oldVal)) {
