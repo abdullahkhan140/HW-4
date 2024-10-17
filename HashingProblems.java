@@ -7,7 +7,7 @@
  * The three methods / problems you need to solve are:
  *  - getAverage
  *  - odd
- *  - twoSums
+ *  - twoSums 
  */
 
 import java.util.HashMap;
