@@ -256,7 +256,6 @@ class myHashMap<K,V> {
         if (originalValue == null || 
             (! originalValue.equals(val)) ) 
             return false; 
-        }
         remove(key); 
         return true; 
     }
